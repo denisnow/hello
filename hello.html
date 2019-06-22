@@ -45,17 +45,12 @@
 			}
 
 			displayNextChar() {
-				let charToDisplay = this.props.textToDisplay[this.state.displayedText.length];
-
-				let calcDelay = function() {						
-					let previousChar = this.props.textToDisplay[this.state.displayedText.length-1];
-					
-					if (charToDisplay === previousChar) return 150;
-					return 333 + Math.random() * 777;
-				}.bind(this);
-			
-				setTimeout(() => this.addCharToDisplayedText(charToDisplay), calcDelay());
-
+				let charToDisplay = this.props.textToDisplay[this.state.displayedText.length];		
+				let previousChar = this.props.textToDisplay[this.state.displayedText.length-1];
+				
+				let delay = (charToDisplay === previousChar) ? 150 : 333 + Math.random() * 777;
+				
+				setTimeout(() => this.addCharToDisplayedText(charToDisplay), delay);
 			}
 
 			componentDidMount() {
