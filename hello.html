@@ -10,7 +10,7 @@
 		<style>
 			.reactMainComponent {
 				font-family: "Roboto Mono", monospace;
-				font-size: 11vw;
+				font-size: 15vw;
 			}
 		</style>
 
@@ -47,14 +47,14 @@
 			displayNextChar() {
 				let charToDisplay = this.props.textToDisplay[this.state.displayedText.length];
 
-				let calculateDelayValue = function() {						
+				let calculateDelayDuration = function() {						
 					let previousChar = this.props.textToDisplay[this.state.displayedText.length-1];
 					
 					if (charToDisplay === previousChar) return 150;
 					return 333 + Math.random() * 777;
 				}.bind(this)
 			
-				setTimeout(() => this.addCharToDisplayedText(charToDisplay), calculateDelayValue());
+				setTimeout(() => this.addCharToDisplayedText(charToDisplay), calculateDelayDuration());
 
 			}
 
