@@ -52,7 +52,7 @@
 					
 					if (charToDisplay === previousChar) return 150;
 					return 333 + Math.random() * 777;
-				}.bind(this)
+				}.bind(this);
 			
 				setTimeout(() => this.addCharToDisplayedText(charToDisplay), calculateDelayDuration());
 
@@ -63,7 +63,7 @@
 					let firstCharToDisplay = this.props.textToDisplay[0];
 				
 					setTimeout(() => this.addCharToDisplayedText(firstCharToDisplay), 555);
-				}.bind(this)
+				}.bind(this);
 			
 				if (this.props.textToDisplay) displayFirstChar();
 			}
