@@ -1,0 +1,127 @@
+<!doctype html>
+
+<html lang="en">
+
+	<head>
+	
+		<meta charset="utf-8">
+		<link href="https://fonts.googleapis.com/css?family=Roboto+Mono&display=swap" rel="stylesheet">
+
+		<style>
+			.reactMainComponent {
+				font-family: "Roboto Mono", monospace;
+				font-size: 11vw;
+			}
+		</style>
+
+	</head>
+
+	<body>
+
+		<div class="reactMainComponent"></div>
+
+		<script type="text/babel">
+		
+		// ------------------------ App class ------------------------------------
+
+		class App extends React.Component {
+
+			render() {
+				return <div><Text textToDisplay="hello" /><Cursor /></div>;
+			}
+		}
+
+		// ------------------------ Text smart class -----------------------------
+
+		class Text extends React.Component {
+
+			constructor() {
+				super();
+				this.state = { displayedText: "" };	
+			}
+
+			addCharToDisplayedText(charToAdd) {
+				this.setState(() => ( { displayedText: this.state.displayedText + charToAdd } ));
+			}
+
+			displayNextChar() {
+				let charToDisplay = this.props.textToDisplay[this.state.displayedText.length];
+
+				let calculateDelayValue = function() {						
+					let previousChar = this.props.textToDisplay[this.state.displayedText.length-1];
+					
+					if (charToDisplay === previousChar) return 150;
+					return 333 + Math.random() * 777;
+				}.bind(this)
+			
+				setTimeout(() => this.addCharToDisplayedText(charToDisplay), calculateDelayValue());
+
+			}
+
+			componentDidMount() {
+				let displayFirstChar = function() {
+					let firstCharToDisplay = this.props.textToDisplay[0];
+				
+					setTimeout(() => this.addCharToDisplayedText(firstCharToDisplay), 555);
+				}.bind(this)
+			
+				if (this.props.textToDisplay) displayFirstChar();
+			}
+			
+			componentDidUpdate() {
+				let isFullTextDisplayed = this.state.displayedText.length === this.props.textToDisplay.length;
+			
+				if (!isFullTextDisplayed) this.displayNextChar();
+			}
+
+			render() {
+				return <span>{this.state.displayedText}</span>;
+			}
+		}
+
+		// ------------------------ Cursor smart class ---------------------------
+
+		class Cursor extends React.Component {
+
+			constructor() {
+				super();
+				this.state = { cursor: "_" };
+			}
+
+			cursorAnimate() {
+				setTimeout(
+					() => this.setState(
+						() => {
+							if (this.state.cursor) return { cursor: "" };
+							return { cursor: "_" };
+						}
+					)	
+				, 555);
+			}
+
+			componentDidMount() {
+				this.cursorAnimate();
+			}
+			
+			componentDidUpdate() {
+				this.cursorAnimate();
+			}
+
+			render() {
+				return <span>{this.state.cursor}</span>;
+			}
+		}
+
+		// -----------------------------------------------------------------------
+
+		ReactDOM.render(<App />, document.querySelector(".reactMainComponent"));
+
+		</script>
+
+		<script src="https://unpkg.com/babel-standalone@6.26.0/babel.min.js"></script>
+		<script src="https://unpkg.com/react@16.7.0/umd/react.production.min.js" crossorigin></script>
+		<script src="https://unpkg.com/react-dom@16.7.0/umd/react-dom.production.min.js" crossorigin></script>
+
+	</body>
+
+</html>
