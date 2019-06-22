@@ -84,14 +84,9 @@
 			}
 
 			cursorAnimate() {
-				setTimeout(
-					() => this.setState(
-						() => {
-							if (this.state.cursor) return { cursor: "" };
-							return { cursor: "_" };
-						}
-					)	
-				, 555);
+				let newState = (this.state.cursor) ? { cursor: "" } : { cursor: "_" };
+					
+				setTimeout(() => this.setState(newState), 555);
 			}
 
 			componentDidMount() {
