@@ -27,13 +27,13 @@
 		class App extends React.Component {
 
 			render() {
-				return <div><Text textToDisplay="hello" /><Cursor /></div>;
+				return <div><TextSmart textToDisplay="hello" /><CursorSmart /></div>;
 			}
 		}
 
 		// ------------------------ Text smart class -----------------------------
 
-		class Text extends React.Component {
+		class TextSmart extends React.Component {
 
 			constructor() {
 				super();
@@ -81,7 +81,7 @@
 
 		// ------------------------ Cursor smart class ---------------------------
 
-		class Cursor extends React.Component {
+		class CursorSmart extends React.Component {
 
 			constructor() {
 				super();
