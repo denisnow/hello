@@ -81,18 +81,18 @@
 				this.state = { cursor: "_" };
 			}
 
-			cursorAnimate() {
+			toggleCursorState() {
 				let newState = (this.state.cursor) ? { cursor: "" } : { cursor: "_" };
 					
 				setTimeout(() => this.setState(newState), 555);
 			}
 
 			componentDidMount() {
-				this.cursorAnimate();
+				this.toggleCursorState();
 			}
 			
 			componentDidUpdate() {
-				this.cursorAnimate();
+				this.toggleCursorState();
 			}
 
 			render() {
