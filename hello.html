@@ -46,16 +46,20 @@
 			}
 
 			displayNextChar() {
-				let charToDisplay = this.props.textToDisplay[this.state.displayedText.length];		
-				let previousChar = this.props.textToDisplay[this.state.displayedText.length-1];
-				
-				let delay = (charToDisplay === previousChar) ? 150 : 333 + Math.random() * 777;
+				let isFullTextDisplayed = this.state.displayedText.length === this.props.textToDisplay.length;
 
-				let addCharToDisplayedText = function() {
-					this.setState( { displayedText: this.state.displayedText + charToDisplay } );
-				}.bind(this);
-				
-				setTimeout(() => addCharToDisplayedText(), delay);
+				if (!isFullTextDisplayed) {
+					let charToDisplay = this.props.textToDisplay[this.state.displayedText.length];		
+					let previousChar = this.props.textToDisplay[this.state.displayedText.length-1];
+					
+					let delay = (charToDisplay === previousChar) ? 150 : 333 + Math.random() * 777;
+
+					let addCharToDisplayedText = function() {
+						this.setState( { displayedText: this.state.displayedText + charToDisplay } );
+					}.bind(this);
+					
+					setTimeout(() => addCharToDisplayedText(), delay);
+				}
 			}
 
 			componentDidMount() {
@@ -63,9 +67,7 @@
 			}
 			
 			componentDidUpdate() {
-				let isFullTextDisplayed = this.state.displayedText.length === this.props.textToDisplay.length;
-			
-				if (!isFullTextDisplayed) this.displayNextChar();
+				this.displayNextChar();
 			}
 
 			render() {
