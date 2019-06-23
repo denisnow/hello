@@ -44,6 +44,10 @@
 				this.setState( { displayedText: this.state.displayedText + charToAdd } );
 			}
 
+			displayFirstChar() {
+				if (this.props.textToDisplay) setTimeout(() => this.setState( { displayedText: this.props.textToDisplay[0] } ), 555);
+			}
+
 			displayNextChar() {
 				let charToDisplay = this.props.textToDisplay[this.state.displayedText.length];		
 				let previousChar = this.props.textToDisplay[this.state.displayedText.length-1];
@@ -54,11 +58,7 @@
 			}
 
 			componentDidMount() {
-				let displayFirstChar = function() {				
-					setTimeout(() => this.setState( { displayedText: this.props.textToDisplay[0] } ), 555);
-				}.bind(this);
-			
-				if (this.props.textToDisplay) displayFirstChar();
+				this.displayFirstChar();
 			}
 			
 			componentDidUpdate() {
