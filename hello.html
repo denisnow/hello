@@ -54,10 +54,8 @@
 			}
 
 			componentDidMount() {
-				let displayFirstChar = function() {
-					let firstCharToDisplay = this.props.textToDisplay[0];
-				
-					setTimeout(() => this.addCharToDisplayedText(firstCharToDisplay), 555);
+				let displayFirstChar = function() {				
+					setTimeout(() => this.setState( { displayedText: this.props.textToDisplay[0] } ), 555);
 				}.bind(this);
 			
 				if (this.props.textToDisplay) displayFirstChar();
