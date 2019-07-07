@@ -22,16 +22,15 @@
 
 		<script type="text/babel">
 		
-		// ------------------------ App class ------------------------------------
+		// ------------------------ App module ------------------------------------
 
-		class App extends React.Component {
+		function App () {
 
-			render() {
-				return <div><TextSmart textToDisplay="hello" /><CursorSmart /></div>;
-			}
+			return <div><TextSmart textToDisplay="hello" /><CursorSmart /></div>;
+
 		}
 
-		// ------------------------ Text smart class -----------------------------
+		// ------------------------ Text smart module -----------------------------
 
 		class TextSmart extends React.Component {
 
@@ -75,7 +74,7 @@
 			}
 		}
 
-		// ------------------------ Cursor smart class ---------------------------
+		// ------------------------ Cursor smart module ---------------------------
 
 		class CursorSmart extends React.Component {
 
