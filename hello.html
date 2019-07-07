@@ -24,7 +24,7 @@
 		
 		// ------------------------ App module ------------------------------------
 
-		function App () {
+		function App() {
 
 			return <div><TextSmart textToDisplay="hello" /><CursorSmart /></div>;
 
@@ -40,8 +40,8 @@
 			}
 
 			displayFirstChar() {
-				//if (this.props.textToDisplay) 
-					setTimeout(() => this.setState( { displayedText: this.props.textToDisplay[0] } ), 555);
+				
+				setTimeout(() => this.setState( { displayedText: this.props.textToDisplay[0] } ), 555);
 			}
 
 			displayNextChar() {
