@@ -34,10 +34,7 @@
 
 		class TextSmart extends React.Component {
 
-			constructor() {
-				super();
-				this.state = { displayedText: "" };	
-			}
+			state = { displayedText: "" };
 
 			displayFirstChar() {
 				setTimeout(() => this.setState( { displayedText: this.props.textToDisplay[0] } ), 555);
@@ -77,10 +74,7 @@
 
 		class CursorSmart extends React.Component {
 
-			constructor() {
-				super();
-				this.state = { cursor: "_" };
-			}
+			state = { cursor: "_" };
 
 			toggleCursorState() {
 				let newState = (this.state.cursor) ? { cursor: "" } : { cursor: "_" };
