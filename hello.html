@@ -34,10 +34,10 @@
 
 		class TextSmart extends React.Component {
 
-			state = { displayedText: "" };
+			state = {displayedText: ""};
 			
 			displayChar(charToDisplay, delayLength) {
-				setTimeout(() => this.setState( { displayedText: this.state.displayedText + charToDisplay } ), delayLength);
+				setTimeout(() => this.setState({displayedText: this.state.displayedText + charToDisplay}), delayLength);
 			}
 
 			displayFirstChar() {
@@ -51,7 +51,7 @@
 					let charToDisplay = this.props.textToDisplay[this.state.displayedText.length];		
 					let previousChar = this.props.textToDisplay[this.state.displayedText.length-1];
 					
-					let delayLength = (charToDisplay === previousChar) ? 150 : 333 + Math.random() * 777;
+					let delayLength = (charToDisplay === previousChar) ? 150 : 333+Math.random()*777;
 
 					this.displayChar (charToDisplay, delayLength);
 				}
@@ -74,10 +74,10 @@
 
 		class CursorSmart extends React.Component {
 
-			state = { cursor: "_" };
+			state = {cursor: "_"};
 
 			toggleCursorState() {
-				let newState = (this.state.cursor) ? { cursor: "" } : { cursor: "_" };
+				let newState = (this.state.cursor) ? {cursor: ""} : {cursor: "_"};
 					
 				setTimeout(() => this.setState(newState), 555);
 			}
