@@ -34,10 +34,10 @@
 
 		class TextSmart extends React.Component {
 
-			state = {displayedText: ""};
+			state = {displayed: ""};
 			
 			displayChar(charToDisplay, delayLength) {
-				setTimeout(() => this.setState({displayedText: this.state.displayedText + charToDisplay}), delayLength);
+				setTimeout(() => this.setState({displayed: this.state.displayed + charToDisplay}), delayLength);
 			}
 
 			displayFirstChar() {
@@ -45,11 +45,11 @@
 			}
 
 			displayNextChar() {
-				let isFullTextDisplayed = this.state.displayedText.length === this.props.textToDisplay.length;
+				let isFullTextDisplayed = this.state.displayed.length === this.props.textToDisplay.length;
 
 				if (!isFullTextDisplayed) {
-					let charToDisplay = this.props.textToDisplay[this.state.displayedText.length];		
-					let previousChar = this.props.textToDisplay[this.state.displayedText.length-1];
+					let charToDisplay = this.props.textToDisplay[this.state.displayed.length];		
+					let previousChar = this.props.textToDisplay[this.state.displayed.length-1];
 					
 					let delayLength = (charToDisplay === previousChar) ? 150 : 333+Math.random()*777;
 
