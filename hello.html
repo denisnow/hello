@@ -35,9 +35,13 @@
 		class TextSmart extends React.Component {
 
 			state = { displayedText: "" };
+			
+			displayChar(charToDisplay, delayLength) {
+				setTimeout(() => this.setState( { displayedText: this.state.displayedText + charToDisplay } ), delayLength);
+			}
 
 			displayFirstChar() {
-				setTimeout(() => this.setState( { displayedText: this.props.textToDisplay[0] } ), 555);
+				this.displayChar(this.props.textToDisplay[0], 333+Math.random()*777);
 			}
 
 			displayNextChar() {
@@ -49,11 +53,7 @@
 					
 					let delayLength = (charToDisplay === previousChar) ? 150 : 333 + Math.random() * 777;
 
-					let addCharToDisplayedText = function() {
-						this.setState( { displayedText: this.state.displayedText + charToDisplay } );
-					}.bind(this);
-					
-					setTimeout(addCharToDisplayedText, delayLength);
+					this.displayChar (charToDisplay, delayLength);
 				}
 			}
 
