@@ -22,7 +22,7 @@
 
 		<script type="text/babel">
 		
-		// ------------------------ Main component ------------------------------------
+		// ------------------------ Main ----------------------------
 
 		function Main() {
 
@@ -30,7 +30,7 @@
 
 		}
 
-		// ------------------------ Text smart component ------------------------------
+		// ------------------------ Text ----------------------------
 
 		class TextSmart extends React.Component {
 
@@ -69,8 +69,8 @@
 				return <span>{this.state.displayedText}</span>;
 			}
 		}
-
-		// ------------------------ Cursor smart component ----------------------------
+		
+		// ------------------------ Cursor --------------------------
 
 		class CursorSmart extends React.Component {
 
@@ -94,8 +94,8 @@
 				return <span>{this.state.cursor}</span>;
 			}
 		}
-
-		// ----------------------------------------------------------------------------
+		
+		// ----------------------------------------------------------
 
 		ReactDOM.render(<Main />, document.body.querySelector(".reactMainComponent"));
 
