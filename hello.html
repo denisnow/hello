@@ -74,12 +74,10 @@
 
 		class CursorSmart extends React.Component {
 
-			state = {cursor: "_"};
+			state = {cursorVisible: true};
 
-			toggleCursorState() {
-				let newState = (this.state.cursor) ? {cursor: ""} : {cursor: "_"};
-					
-				setTimeout(() => this.setState(newState), 555);
+			toggleCursorState() {				
+				setTimeout(() => this.setState({cursorVisible: !this.state.cursorVisible}), 555);
 			}
 
 			componentDidMount() {
@@ -91,7 +89,7 @@
 			}
 
 			render() {
-				return <span>{this.state.cursor}</span>;
+				return <span>{this.state.cursorVisible && "_"}</span>;
 			}
 		}
 		
