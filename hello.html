@@ -72,13 +72,23 @@
 		
 		// ------------------------ Cursor --------------------------
 
+		function CursorSmart() {
+
+			const [isCursorVisible, toggleCursorState] = React.useState(true);
+
+			React.useEffect(() => {
+				setTimeout(() => toggleCursorState(!isCursorVisible), 555);
+ 			});
+
+			return <span>{isCursorVisible && "_"}</span>;
+		}
+
+		/*
 		class CursorSmart extends React.Component {
 
 			state = {cursorVisible: true};
 
-			toggleCursorState() {				
-				setTimeout(() => this.setState({cursorVisible: !this.state.cursorVisible}), 555);
-			}
+			
 
 			componentDidMount() {
 				this.toggleCursorState();
@@ -89,9 +99,10 @@
 			}
 
 			render() {
-				return <span>{this.state.cursorVisible && "_"}</span>;
+				return <span>{cursorVisible && "_"}</span>;
 			}
 		}
+		*/
 		
 		// ----------------------------------------------------------
 
@@ -100,8 +111,8 @@
 		</script>
 
 		<script src="https://unpkg.com/babel-standalone@6.26.0/babel.min.js"></script>
-		<script src="https://unpkg.com/react@16.7.0/umd/react.production.min.js" crossorigin></script>
-		<script src="https://unpkg.com/react-dom@16.7.0/umd/react-dom.production.min.js" crossorigin></script>
+		<script src="https://unpkg.com/react@16.10.1/umd/react.production.min.js" crossorigin></script>
+		<script src="https://unpkg.com/react-dom@16.10.1/umd/react-dom.production.min.js" crossorigin></script>
 
 	</body>
 
