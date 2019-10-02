@@ -90,18 +90,18 @@
 			}
 		}
 		*/
-		
+
 		// ------------------------ Cursor --------------------------
 
 		function CursorSmart() {
 
-			const [isCursorVisible, toggleCursorState] = React.useState(true);
+			const [cursorVisibilityState, setCursorVisibilityState] = React.useState(true);
 
 			React.useEffect(() => {
-				setTimeout(() => toggleCursorState(!isCursorVisible), 555);
+				setTimeout(() => setCursorVisibilityState(!cursorVisibilityState), 555);
  			});
 
-			return <span>{isCursorVisible && "_"}</span>;
+			return <span>{cursorVisibilityState && "_"}</span>;
 		}
 
 		/*
