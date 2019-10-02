@@ -27,11 +27,31 @@
 		function Main() {
 
 			return <div><TextSmart textToDisplay="hello" /><CursorSmart /></div>;
-
 		}
 
 		// ------------------------ Text ----------------------------
 
+		function TextSmart(props) {
+
+			const [displayedText, updateDisplayedText] = React.useState("");
+
+			React.useEffect(() => {
+
+				let delayLength = 555;
+				let charToDisplay = props.textToDisplay[displayedText.length];		
+				let previousChar = props.textToDisplay[displayedText.length-1];
+
+				let isFullTextDisplayed = displayedText.length === props.textToDisplay.length;
+
+				if (displayedText) delayLength = (charToDisplay === previousChar) ? 150 : 333+Math.random()*777;
+
+				if (!isFullTextDisplayed) setTimeout(() => updateDisplayedText(displayedText + charToDisplay), delayLength);
+ 			});
+
+			return <span>{displayedText}</span>;
+		}
+
+		/*
 		class TextSmart extends React.Component {
 
 			state = {displayed: ""};
@@ -44,7 +64,7 @@
 				this.displayChar(this.props.textToDisplay[0], 333+Math.random()*777);
 			}
 
-			displayNextChar() {
+			updateDisplayedText() {
 				let isFullTextDisplayed = this.state.displayed.length === this.props.textToDisplay.length;
 
 				if (!isFullTextDisplayed) {
@@ -60,15 +80,16 @@
 			componentDidMount() {
 				this.displayFirstChar();
 			}
-			
+
 			componentDidUpdate() {
-				this.displayNextChar();
+				this.updateDisplayedText();
 			}
 
 			render() {
 				return <span>{this.state.displayed}</span>;
 			}
 		}
+		*/
 		
 		// ------------------------ Cursor --------------------------
 
@@ -88,12 +109,10 @@
 
 			state = {cursorVisible: true};
 
-			
-
 			componentDidMount() {
 				this.toggleCursorState();
 			}
-			
+
 			componentDidUpdate() {
 				this.toggleCursorState();
 			}
@@ -103,7 +122,7 @@
 			}
 		}
 		*/
-		
+
 		// ----------------------------------------------------------
 
 		ReactDOM.render(<Main />, document.body.querySelector(".reactMain"));
