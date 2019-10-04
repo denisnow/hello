@@ -35,16 +35,15 @@
 
 			const [displayedText, updateDisplayedText] = React.useState("");
 
+			let delayLength = 555;
+			let charToDisplay = props.textToDisplay[displayedText.length];		
+			let previousChar = props.textToDisplay[displayedText.length-1];
+
+			let isFullTextDisplayed = displayedText.length === props.textToDisplay.length;
+
+			if (displayedText) delayLength = (charToDisplay === previousChar) ? 150 : 333+Math.random()*777;
+
 			React.useEffect(() => {
-
-				let delayLength = 555;
-				let charToDisplay = props.textToDisplay[displayedText.length];		
-				let previousChar = props.textToDisplay[displayedText.length-1];
-
-				let isFullTextDisplayed = displayedText.length === props.textToDisplay.length;
-
-				if (displayedText) delayLength = (charToDisplay === previousChar) ? 150 : 333+Math.random()*777;
-
 				if (!isFullTextDisplayed) setTimeout(() => updateDisplayedText(displayedText + charToDisplay), delayLength);
  			});
 
