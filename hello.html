@@ -26,7 +26,7 @@
 
 		function Main() {
 
-			return <div><TextSmart textToDisplay="hello" /><CursorSmart /></div>;
+			return <React.Fragment><TextSmart textToDisplay="hello" /><CursorSmart /></React.Fragment>;
 		}
 
 		// ------------------------ Text ----------------------------
@@ -47,7 +47,7 @@
 				if (!isFullTextDisplayed) setTimeout(() => updateDisplayedText(displayedText + charToDisplay), delayLength);
  			});
 
-			return <span>{displayedText}</span>;
+			return <React.Fragment>{displayedText}</React.Fragment>;
 		}
 
 		/*
@@ -100,7 +100,7 @@
 				setTimeout(() => setCursorVisibilityState(!cursorVisibilityState), 555);
  			});
 
-			return <span>{cursorVisibilityState && "_"}</span>;
+			return <React.Fragment>{cursorVisibilityState && "_"}</React.Fragment>;
 		}
 
 		/*
