@@ -33,7 +33,7 @@
 
 		function TextSmart(props) {
 
-			const [displayedText, updateDisplayedText] = React.useState("");
+			const [displayedText, setDisplayedText] = React.useState("");
 
 			let delayLength = 555;
 			let charToDisplay = props.textToDisplay[displayedText.length];		
@@ -44,7 +44,7 @@
 			if (displayedText) delayLength = (charToDisplay === previousChar) ? 150 : 333+Math.random()*777;
 
 			React.useEffect(() => {
-				if (!isFullTextDisplayed) setTimeout(() => updateDisplayedText(displayedText + charToDisplay), delayLength);
+				if (!isFullTextDisplayed) setTimeout(() => setDisplayedText(displayedText + charToDisplay), delayLength);
  			});
 
 			return <React.Fragment>{displayedText}</React.Fragment>;
